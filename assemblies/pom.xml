@@ -66,6 +66,7 @@
       </activation>
       <modules>
         <module>pentaho-user-console</module>
+        <module>pentaho-new-user-console</module>
       </modules>
     </profile>
 
