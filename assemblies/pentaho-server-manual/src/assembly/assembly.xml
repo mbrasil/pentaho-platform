@@ -69,6 +69,15 @@
       </includes>
       <outputFileNameMapping>pentaho.${artifact.extension}</outputFileNameMapping>
     </dependencySet>
+    <dependencySet>
+      <outputDirectory>.</outputDirectory>
+      <useTransitiveDependencies>false</useTransitiveDependencies>
+      <useProjectArtifact>false</useProjectArtifact>
+      <includes>
+        <include>com.pentaho:pentaho-ba-webapp-assembly:war</include>
+      </includes>
+      <outputFileNameMapping>pentaho-ba-webapp.${artifact.extension}</outputFileNameMapping>
+    </dependencySet>
 
   </dependencySets>
 
