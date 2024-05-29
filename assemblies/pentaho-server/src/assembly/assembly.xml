@@ -128,6 +128,15 @@
     <dependencySet>
       <unpack>true</unpack>
       <includes>
+        <include>com.pentaho:pentaho-ba-webapp-assembly:war</include>
+      </includes>
+      <outputDirectory>tomcat/webapps/pentaho-ba-webapp</outputDirectory>
+      <useTransitiveDependencies>false</useTransitiveDependencies>
+      <useProjectArtifact>false</useProjectArtifact>
+    </dependencySet>
+    <dependencySet>
+      <unpack>true</unpack>
+      <includes>
         <include>pentaho:pentaho-solutions:zip</include>
       </includes>
       <outputDirectory>.</outputDirectory>
