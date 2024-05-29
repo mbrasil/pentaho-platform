@@ -299,6 +299,7 @@
         </property>
       </activation>
       <modules>
+        <module>new-user-console</module>
         <module>user-console</module>
         <module>assemblies</module>
       </modules>
