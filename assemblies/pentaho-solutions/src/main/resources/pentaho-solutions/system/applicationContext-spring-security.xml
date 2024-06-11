@@ -406,6 +406,7 @@
         <sec:intercept-url pattern="\A/plugin/reporting/api/jobs/.*\Z" access="Anonymous,Authenticated" method="HEAD" />
         <sec:intercept-url pattern="\A/api/repos/.*\Z" access="Anonymous,Authenticated" method="OPTIONS" />
         <sec:intercept-url pattern="\A/api/repos/.*\Z" access="Anonymous,Authenticated" method="HEAD" />
+        <sec:intercept-url pattern="\A/api/session/userName.*\Z" access="Anonymous,Authenticated" />
         <sec:intercept-url pattern="\A/api/.*\Z" access="Authenticated" />
         <sec:intercept-url pattern="\A/plugin/.*\Z" access="Authenticated" />
       </sec:filter-security-metadata-source>
