@@ -47,6 +47,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
@@ -382,7 +383,9 @@ public class UploadFileUtils {
                   PentahoSystem.getApplicationContext()
                     .createTempFile( session, StringUtil.EMPTY_STRING, DOT + extension + DOT_TMP, true );
               } else {
-                entryFile = new File( getPath() + File.separatorChar + entry.getName() );
+                File destination = new File( getPath() + File.separatorChar );
+                entryFile = new File( destination, entry.getName() );
+                validateZipSlip( entryFile, destination );
               }
 
               if ( sb.length() > 0 ) {
@@ -498,7 +501,9 @@ public class UploadFileUtils {
                   PentahoSystem.getApplicationContext()
                     .createTempFile( session, StringUtil.EMPTY_STRING, DOT + extension + DOT_TMP, true );
               } else {
-                entryFile = new File( getPath() + File.separatorChar + entry.getName() );
+                File destination = new File( getPath() + File.separatorChar );
+                entryFile = new File( destination, entry.getName() );
+                validateZipSlip( entryFile, destination );
               }
 
               if ( sb.length() > 0 ) {
@@ -527,6 +532,12 @@ public class UploadFileUtils {
     } else {
       // no valid entries in the zip - nothing unzipped
       return Messages.getInstance().getErrorString( "UploadFileServlet.ERROR_0012_ILLEGAL_CONTENTS" );
+    }
+  }
+
+  private void validateZipSlip( File destinationFile, File destinationDir ) throws IOException {
+    if ( !destinationFile.getCanonicalPath().startsWith( destinationDir.getCanonicalPath() + File.separator ) ) {
+      throw new ZipException( "Zip file with invalid path." );
     }
   }
 
